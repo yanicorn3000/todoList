@@ -3,14 +3,7 @@ import { useState } from "react";
 import Operations from "./Operations";
 import { useOperations } from "./api";
 
-const Task = ({
-  taskTitle,
-  taskDescription,
-  taskStatus,
-  onRemoveTask,
-  onFinish,
-  task,
-}) => {
+const Task = ({ onRemoveTask, onFinish, task }) => {
   const [showAddNewOperation, setAddNewOperation] = useState(false);
   const [operations, { refetch }] = useOperations(task.id);
 
@@ -38,28 +31,28 @@ const Task = ({
     <li>
       <div className={styles.taskCard}>
         <div className={styles.text}>
-          <h4>{taskTitle}</h4>
-          <p>{taskDescription}</p>
+          <h4>{task.title}</h4>
+          <p>{task.description}</p>
         </div>
 
         <div className={styles.buttonGroup}>
-          {taskStatus === "open" ? (
+          {task.status === "open" ? (
             <>
               <button
                 className={styles.finishButton}
                 onClick={finishTask(task)}
               >
-                Finish <span></span>
+                Finish <span className={styles.icon}></span>
               </button>
               <button className={styles.addButton} onClick={addOperation}>
-                Add operation<span></span>
+                Add operation<span className={styles.icon}></span>
               </button>
             </>
           ) : null}
 
           {operations && operations.length === 0 && !showAddNewOperation ? (
             <button className={styles.trashButton} onClick={removeTask(task)}>
-              <span className={styles.trashIcon}></span>
+              <span className={styles.icon}></span>
             </button>
           ) : null}
         </div>
@@ -68,7 +61,7 @@ const Task = ({
           taskId={task.id}
           showNewOperation={showAddNewOperation}
           onAddNewOperation={onAddNewOperation}
-          taskStatus={taskStatus}
+          taskStatus={task.status}
           operations={operations}
           refetchOperation={refetch}
         />

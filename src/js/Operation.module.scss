@@ -15,6 +15,7 @@
 
     p {
       margin: 0;
+      max-width: 70%;
     }
 
     .timeLabel {
@@ -30,40 +31,33 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    min-width: 120px;
     .addTimeBtn {
+      @extend %button;
       font-size: 0.7rem;
       color: $success-color;
       background-color: white;
       border: 1px solid $success-color;
-      border-radius: 4px;
-      padding: 5px 10px;
-      cursor: pointer;
 
-      span {
+      .icon {
         @extend .fa-solid;
         @extend .fa-clock;
         margin-left: 5px;
+        color: $success-color;
+      }
 
-        &::before {
-          color: $success-color;
+      &:hover {
+        border: 1px solid $success-color;
+        background-color: $success-color;
+        color: white;
+
+        .icon {
+          color: white;
         }
       }
     }
     .trashButton {
-      border: 1px solid rgb(211, 27, 27);
-      background-color: white;
-      padding: 5px 7px;
-      border-radius: 4px;
-      cursor: pointer;
-
-      span {
-        @extend .fa-solid;
-        @extend .fa-trash;
-
-        &::before {
-          color: rgb(211, 27, 27);
-        }
-      }
+      @include removeBtn;
     }
   }
 
@@ -75,30 +69,25 @@
     }
 
     .saveBtn {
-      border: 0.5px solid $success-color;
-      padding: 2px 5px;
-      background-color: white;
-      border-right: none;
-      cursor: pointer;
-      .saveIcon {
-        @extend .fa-solid;
-        @extend .fa-floppy-disk;
+      @include miniBtn($success-color) {
+        border-right: none;
+        border-radius: 0;
 
-        &::before {
-          color: $success-color;
+        .icon {
+          @extend .fa-solid;
+          @extend .fa-floppy-disk;
         }
       }
     }
 
     .closeBtn {
-      padding: 2px 5px;
-      background-color: white;
-      border: 0.5px solid grey;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-      .closeIcon {
-        @extend .fa-solid;
-        @extend .fa-xmark;
+      @include miniBtn(grey) {
+        border-radius: 0 4px 4px 0;
+
+        .icon {
+          @extend .fa-solid;
+          @extend .fa-xmark;
+        }
       }
     }
   }

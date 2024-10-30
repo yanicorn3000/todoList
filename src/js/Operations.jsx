@@ -65,6 +65,7 @@ const Operations = ({
             name="description"
             value={newOperation.description}
             onChange={onChange}
+            placeholder="Operation Description"
           />
           <button
             className={styles.addOperationBtn}

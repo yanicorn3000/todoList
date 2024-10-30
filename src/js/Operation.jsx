@@ -30,13 +30,13 @@ const Operation = ({
     if (time) {
       return onChangeTime({
         ...operation,
-        timeSpent: operation.timeSpent + Number(time),
+        timeSpent: operation.timeSpent + time,
       });
     }
   };
 
   const onChange = (e) => {
-    const value = e.target.value;
+    const value = Number(e.target.value);
     setTime(value);
   };
 
@@ -66,14 +66,14 @@ const Operation = ({
             <>
               {taskStatus === "open" ? (
                 <button onClick={showTimeInput} className={styles.addTimeBtn}>
-                  Add time<span></span>
+                  Add time<span className={styles.icon}></span>
                 </button>
               ) : null}
               <button
                 className={styles.trashButton}
                 onClick={removeOperation(operation)}
               >
-                <span></span>
+                <span className={styles.icon}></span>
               </button>
             </>
           ) : (
@@ -85,10 +85,10 @@ const Operation = ({
                 onChange={onChange}
               />
               <button className={styles.saveBtn} onClick={changeTime}>
-                <span className={styles.saveIcon}></span>
+                <span className={styles.icon}></span>
               </button>
               <button className={styles.closeBtn} onClick={closeTimeInput}>
-                <span className={styles.closeIcon}></span>
+                <span className={styles.icon}></span>
               </button>
             </div>
           )}

@@ -11,9 +11,6 @@ const Tasks = ({ tasks, onRemoveTask, onFinish }) => {
           return (
             <Task
               key={task.id}
-              taskTitle={task.title}
-              taskDescription={task.description}
-              taskStatus={task.status}
               task={task}
               onRemoveTask={onRemoveTask}
               onFinish={onFinish}

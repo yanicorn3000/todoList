@@ -8,3 +8,58 @@ $fa-font-path: "@fortawesome/fontawesome-free/webfonts"; //fontawesome
 //COLORS
 
 $success-color: rgb(37, 160, 74);
+$warning-color: rgb(211, 27, 27);
+$text-color: rgb(71, 71, 71);
+$primary-color: rgb(27, 190, 188);
+
+%button {
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-wrap: nowrap;
+  color: white;
+}
+
+@mixin removeBtn {
+  @extend %button;
+  border: 1px solid $warning-color;
+  background-color: white;
+  padding: 5px 8px;
+
+  .icon {
+    @extend .fa-solid;
+    @extend .fa-trash;
+    color: $warning-color;
+  }
+
+  &:hover {
+    border: 1px solid $warning-color;
+    background-color: $warning-color;
+
+    .icon {
+      color: white;
+    }
+  }
+}
+
+@mixin miniBtn($color) {
+  background-color: white;
+  padding: 2px 5px;
+  border: 0.5px solid $color;
+  cursor: pointer;
+  @content;
+
+  .icon {
+    color: $color;
+  }
+
+  &:hover {
+    background-color: $color;
+
+    .icon {
+      color: white;
+    }
+  }
+}

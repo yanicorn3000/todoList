@@ -1,4 +1,4 @@
-@use "_utils";
+@use "_utils" as *;
 
 .operations {
   background-color: #ffffff;
@@ -15,17 +15,21 @@
     }
 
     .addOperationBtn {
-      background-color: rgb(27, 190, 188);
-      color: white;
-      border: none;
+      @extend %button;
+      background-color: $primary-color;
       padding: 5px 12px;
       border-radius: 0 4px 4px 0;
-      cursor: pointer;
 
       span {
         @extend .fa-solid;
         @extend .fa-circle-plus;
         margin-left: 5px;
+      }
+
+      &:hover {
+        border: 1px solid $primary-color;
+        background-color: white;
+        color: $primary-color;
       }
     }
   }

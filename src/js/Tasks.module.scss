@@ -1,4 +1,4 @@
-@use "_utils";
+@use "_utils" as *;
 
 .tasks {
   display: flex;
@@ -51,49 +51,40 @@
           gap: 10px;
           margin: 15px 20px 10px 20px;
 
-          button {
-            padding: 5px 10px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            cursor: pointer;
-          }
-
           .addButton {
-            background-color: rgb(27, 190, 188);
-            color: white;
-            cursor: pointer;
-            span {
+            @extend %button;
+            background-color: $primary-color;
+            .icon {
               @extend .fa-solid;
               @extend .fa-circle-plus;
               margin-left: 5px;
             }
 
             &:hover {
-              border: 1px solid rgb(27, 190, 188);
+              border: 1px solid $primary-color;
               background-color: white;
-              color: rgb(27, 190, 188);
+              color: $primary-color;
             }
           }
           .finishButton {
-            background-color: rgb(71, 71, 71);
-            color: white;
+            @extend %button;
+            background-color: $text-color;
 
-            span {
+            .icon {
               @extend .fa-solid;
               @extend .fa-calendar;
               margin-left: 5px;
             }
+
+            &:hover {
+              border: 1px solid $text-color;
+              background-color: white;
+              color: $text-color;
+            }
           }
 
           .trashButton {
-            border: 1px solid rgb(211, 27, 27);
-
-            .trashIcon {
-              @extend .fa-solid;
-              @extend .fa-trash;
-
-              color: rgb(211, 27, 27);
-            }
+            @include removeBtn;
           }
         }
       }
