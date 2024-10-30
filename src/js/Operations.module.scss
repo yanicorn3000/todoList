@@ -1,0 +1,37 @@
+@use "_utils";
+
+.operations {
+  background-color: #ffffff;
+
+  .operationsForm {
+    display: flex;
+    padding: 20px;
+    input {
+      width: 100%;
+      padding: 5px 10px;
+      border: 0.5px solid #cccccc;
+      border-radius: 4px 0 0 4px;
+      max-width: 690px;
+    }
+
+    .addOperationBtn {
+      background-color: rgb(27, 190, 188);
+      color: white;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+
+      span {
+        @extend .fa-solid;
+        @extend .fa-circle-plus;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .operationList {
+    max-width: 800px;
+    gap: 0;
+  }
+}

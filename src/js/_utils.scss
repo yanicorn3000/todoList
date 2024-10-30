@@ -1,0 +1,10 @@
+$fa-font-path: "@fortawesome/fontawesome-free/webfonts"; //fontawesome
+
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+
+// our project needs Solid + Brands
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
+
+//COLORS
+
+$success-color: rgb(37, 160, 74);

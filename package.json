@@ -1,0 +1,28 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@vitejs/plugin-react": "4.0.4",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-react": "^7.37.2",
+    "globals": "^15.11.0",
+    "prettier": "3.0.3",
+    "sass": "^1.80.4",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "@fortawesome/fontawesome-free": "^6.6.0"
+  }
+}

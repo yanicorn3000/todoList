@@ -1,0 +1,109 @@
+@use "_utils" as *;
+
+.operationsItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-bottom: 0.6px solid rgb(214, 214, 214);
+
+  .operationsContent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    p {
+      margin: 0;
+    }
+
+    .timeLabel {
+      background-color: $success-color;
+      font-size: 0.6rem;
+      color: white;
+      padding: 2px 4px;
+      border-radius: 6px;
+    }
+  }
+
+  .buttonGroup {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    .addTimeBtn {
+      font-size: 0.7rem;
+      color: $success-color;
+      background-color: white;
+      border: 1px solid $success-color;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+
+      span {
+        @extend .fa-solid;
+        @extend .fa-clock;
+        margin-left: 5px;
+
+        &::before {
+          color: $success-color;
+        }
+      }
+    }
+    .trashButton {
+      border: 1px solid rgb(211, 27, 27);
+      background-color: white;
+      padding: 5px 7px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      span {
+        @extend .fa-solid;
+        @extend .fa-trash;
+
+        &::before {
+          color: rgb(211, 27, 27);
+        }
+      }
+    }
+  }
+
+  .timeInput {
+    input {
+      padding: 2px 5px;
+      border: 0.5px solid #cccccc;
+      border-radius: 4px 0 0 4px;
+    }
+
+    .saveBtn {
+      border: 0.5px solid $success-color;
+      padding: 2px 5px;
+      background-color: white;
+      border-right: none;
+      cursor: pointer;
+      .saveIcon {
+        @extend .fa-solid;
+        @extend .fa-floppy-disk;
+
+        &::before {
+          color: $success-color;
+        }
+      }
+    }
+
+    .closeBtn {
+      padding: 2px 5px;
+      background-color: white;
+      border: 0.5px solid grey;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      .closeIcon {
+        @extend .fa-solid;
+        @extend .fa-xmark;
+      }
+    }
+  }
+}
+
+li:last-child .operationsItem {
+  border-bottom: none;
+}
