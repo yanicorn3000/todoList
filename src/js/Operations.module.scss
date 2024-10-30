@@ -5,13 +5,14 @@
 
   .operationsForm {
     display: flex;
-    padding: 20px;
+    padding: 15px 10px;
+    width: 100%;
+    flex-wrap: wrap;
     input {
-      width: 100%;
-      padding: 5px 10px;
+      width: 90%;
+      padding: 5px 5px;
       border: 0.5px solid #cccccc;
       border-radius: 4px 0 0 4px;
-      max-width: 690px;
     }
 
     .addOperationBtn {
@@ -35,7 +36,14 @@
   }
 
   .operationList {
+    margin-top: 5px;
     max-width: 800px;
     gap: 0;
+  }
+
+  .formError {
+    color: $warning-color;
+    font-size: 0.7rem;
+    margin: 5px;
   }
 }

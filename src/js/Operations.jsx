@@ -1,6 +1,6 @@
 import Operation from "./Operation";
 import styles from "./Operations.module.scss";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { addNewOperation, deleteOperation, addTimeSpent } from "./api";
 
 const Operations = ({
@@ -23,8 +23,21 @@ const Operations = ({
     timeSpent: 0,
   });
 
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    setError("");
+  }, [showNewOperation]);
+
   const onChange = (e) => {
     const { name, value } = e.target;
+
+    if (value.length < 5) {
+      setError("Operation Description must be at least 5 characters");
+    } else {
+      setError("");
+    }
+
     setNewOperation((prevOperation) => ({
       ...prevOperation,
       [name]: value,
@@ -67,6 +80,7 @@ const Operations = ({
             onChange={onChange}
             placeholder="Operation Description"
           />
+
           <button
             className={styles.addOperationBtn}
             onClick={onSubmit}
@@ -74,6 +88,7 @@ const Operations = ({
           >
             Add<span></span>
           </button>
+          {error && <p className={styles.formError}>{error}</p>}
         </form>
       ) : null}
       <ul className={styles.operationList}>
