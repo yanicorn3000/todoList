@@ -1,5 +1,5 @@
 import styles from "./NewTask.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NewTask = ({ onNewTask }) => {
   const [task, setTask] = useState({
@@ -15,13 +15,26 @@ const NewTask = ({ onNewTask }) => {
     }));
   };
 
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    setError("");
+  }, [task]);
+
   const onSubmit = (e) => {
     e.preventDefault();
-    onNewTask({ ...task, status: "open" });
-    setTask({
-      title: "",
-      description: "",
-    });
+    onNewTask({ ...task, status: "open" })
+      .then(() => {
+        setTask({
+          title: "",
+          description: "",
+        });
+      })
+      .catch((err) => {
+        if (Array.isArray(err) && err.length > 0) {
+          setError(err[0]);
+        }
+      });
   };
 
   return (
@@ -42,9 +55,10 @@ const NewTask = ({ onNewTask }) => {
               placeholder="Description"
               value={task.description}
             />
+            <p className={styles.taskError}>{error}</p>
           </div>
           <button className={styles.formButton} type="submit">
-            Add task<span></span>
+            Add task<span className={styles.icon}></span>
           </button>
         </form>
       </div>

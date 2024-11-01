@@ -15,7 +15,7 @@ export const apiRequest = async (pathname, options = {}) => {
 
     const response = await request.json();
     if (response.error) {
-      throw new Error(response.error);
+      throw response.data.errors;
     }
     return response.data;
   } catch (err) {

@@ -32,11 +32,11 @@ const Operations = ({
   const onChange = (e) => {
     const { name, value } = e.target;
 
-    if (value.length < 5) {
-      setError("Operation Description must be at least 5 characters");
-    } else {
-      setError("");
-    }
+    // if (value.length < 5) {
+    //   setError("Operation Description must be at least 5 characters");
+    // } else {
+    //   setError("");
+    // }
 
     setNewOperation((prevOperation) => ({
       ...prevOperation,
@@ -45,7 +45,7 @@ const Operations = ({
   };
 
   const onNewOperation = (newOperation) => {
-    addNewOperation(taskId, newOperation).then(refetchOperation);
+    return addNewOperation(taskId, newOperation).then(refetchOperation);
   };
 
   const onDeleteOperation = (operation) => {
@@ -54,17 +54,23 @@ const Operations = ({
 
   const onChangeTime = (operation) => {
     addTimeSpent(operation).then(refetchOperation);
-    console.log(operation);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onNewOperation({ ...newOperation });
-    setNewOperation({
-      description: "",
-      timeSpent: 0,
-    });
-    onAddNewOperation();
+    onNewOperation({ ...newOperation })
+      .then(() => {
+        setNewOperation({
+          description: "",
+          timeSpent: 0,
+        });
+        onAddNewOperation();
+      })
+      .catch((err) => {
+        if (Array.isArray(err) && err.length > 0) {
+          setError(err[0]);
+        }
+      });
   };
 
   if (!operations) {

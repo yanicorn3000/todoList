@@ -7,7 +7,7 @@ import "../main.scss";
 const App = () => {
   const [tasks, { refetch }] = useTasks();
   const onNewTask = (task) => {
-    addNewTask(task).then(refetch);
+    return addNewTask(task).then(refetch);
   };
 
   const onFinish = (task) => {
